@@ -156,11 +156,9 @@ public class BloomFilterImpl<T> implements BloomFilter<T> {
      */
     private boolean pipelineSetBit(String key, Set<Integer> offsetSet) {
         int slot = JedisClusterCRC16.getSlot(key);
-        JedisPool jedisPool = getJedisCluster().getConnectionHandler().getJedisPoolFromSlot(slot);
-        Jedis jedis = null;
+        Jedis jedis = getJedisCluster().getConnectionFromSlot(slot);
         Pipeline pipeline = null;
         try {
-            jedis = jedisPool.getResource();
             pipeline = jedis.pipelined();
             for (int offset : offsetSet) {
                 pipeline.setbit(key, offset, true);
@@ -184,11 +182,9 @@ public class BloomFilterImpl<T> implements BloomFilter<T> {
     private Map<Integer, Boolean> pipelineGetBit(String key, List<Integer> offsetList) {
         Map<Integer, Boolean> offsetResultMap = new HashMap<Integer, Boolean>();
         int slot = JedisClusterCRC16.getSlot(key);
-        JedisPool jedisPool = getJedisCluster().getConnectionHandler().getJedisPoolFromSlot(slot);
-        Jedis jedis = null;
+        Jedis jedis = getJedisCluster().getConnectionFromSlot(slot);
         Pipeline pipeline = null;
         try {
-            jedis = jedisPool.getResource();
             pipeline = jedis.pipelined();
             for (int offset : offsetList) {
                 pipeline.getbit(key, offset);
