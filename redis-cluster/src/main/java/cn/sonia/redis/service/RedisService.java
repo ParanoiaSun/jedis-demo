@@ -1,7 +1,7 @@
 package cn.sonia.redis.service;
 
 /**
- * Create By Sonia_Sun on 2019-11-08
+ * Create By Sonia_Sun on 2019-11-05
  */
 public interface RedisService {
 

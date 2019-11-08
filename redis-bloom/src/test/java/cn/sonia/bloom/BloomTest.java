@@ -18,8 +18,6 @@ public class BloomTest {
     public static void main(String[] args) {
 
         // rediscluster客户端
-        long appId = 10400;
-
         Set<HostAndPort> nodeList = new HashSet<HostAndPort>();
         nodeList.add(new HostAndPort("127.0.0.1", 7000));
         nodeList.add(new HostAndPort("127.0.0.1", 7001));

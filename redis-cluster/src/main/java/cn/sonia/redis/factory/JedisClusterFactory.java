@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * Create By Sonia_Sun on 2019-11-07
+ * Create By Sonia_Sun on 2019-11-05
  */
 public class JedisClusterFactory {
 
@@ -20,15 +20,12 @@ public class JedisClusterFactory {
 
     private List<String> hostPortList;
 
-    /**
-     * 单位是毫秒
-     */
     private int timeout;
 
     private Logger logger = LoggerFactory.getLogger(JedisClusterFactory.class);
 
     public void init() {
-        //这里可以设置相关参数
+        //设置相关参数
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
 
         Set<HostAndPort> nodeSet = new HashSet<HostAndPort>();
