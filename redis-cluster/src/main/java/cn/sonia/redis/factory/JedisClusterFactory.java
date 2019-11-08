@@ -45,7 +45,6 @@ public class JedisClusterFactory {
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
         }
-        System.out.println("我来啦");
     }
 
     public void destory() {
